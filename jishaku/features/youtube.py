@@ -42,9 +42,9 @@ class BasicYouTubeDLSource(discord.FFmpegPCMAudio):
         ytdl = youtube_dl.YoutubeDL(BASIC_OPTS)
         info: typing.Dict[str, typing.Any] = ytdl.extract_info(url, download=download)  # type: ignore
         try:
-            super().__init__(info['url'])
+            super().__init__(info['url'], options="-vn -bufsize 10M", before_options="-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5")
         except KeyError:
-            super().__init__(info['entries'][0]['url'])
+            super().__init__(info['entries'][0]['url'], options="-vn -bufsize 10M", before_options="-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5")
 
 
 class YouTubeFeature(Feature):
