@@ -28,7 +28,8 @@ from jishaku.features.voice import VoiceFeature
 BASIC_OPTS = {
     'format': 'webm[abr>0]/bestaudio/best',
     'prefer_ffmpeg': True,
-    'quiet': True
+    'quiet': True,
+    'js_runtimes': {'node': {}}
 }
 
 
